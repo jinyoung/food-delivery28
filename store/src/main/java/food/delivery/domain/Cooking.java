@@ -65,6 +65,8 @@ public class Cooking  {
 
 
 
+    public void acceptOrReject(AcceptOrRejectCommand acceptOrRejectCommand){
+    }
 
     public static void storeOrderData(OrderPlaced orderPlaced){
 

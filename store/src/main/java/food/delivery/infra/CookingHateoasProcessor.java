@@ -11,6 +11,7 @@ public class CookingHateoasProcessor implements RepresentationModelProcessor<Ent
 
     @Override
     public EntityModel<Cooking> process(EntityModel<Cooking> model) {
+        model.add(Link.of(model.getRequiredLink("self").getHref() + "/acceptorreject").withRel("acceptorreject"));
 
         
         return model;

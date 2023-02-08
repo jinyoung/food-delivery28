@@ -21,6 +21,24 @@ public class CookingController {
 
 
 
+    @RequestMapping(value = "cookings/{id}/acceptorreject",
+        method = RequestMethod.PUT,
+        produces = "application/json;charset=UTF-8")
+    public Cooking acceptOrReject(@PathVariable(value = "id") Long id, @RequestBody AcceptOrRejectCommand acceptOrRejectCommand, HttpServletRequest request, HttpServletResponse response) throws Exception {
+            System.out.println("##### /cooking/acceptOrReject  called #####");
+            Optional<Cooking> optionalCooking = cookingRepository.findById(id);
+            
+            optionalCooking.orElseThrow(()-> new Exception("No Entity Found"));
+            Cooking cooking = optionalCooking.get();
+            cooking.acceptOrReject(acceptOrRejectCommand);
+            
+            cookingRepository.save(cooking);
+            return cooking;
+            
+    }
+    
+
+
 
 
 }
